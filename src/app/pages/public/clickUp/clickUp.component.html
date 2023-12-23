@@ -1,16 +1,96 @@
 <div>
-  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+  <ul ngbNav #nav="ngbNav" [(activeId)]="activeTab" class="nav-tabs">
+    
+    
     <li [ngbNavItem]="1">
-      <button ngbNavLink>One</button>
+      <button ngbNavLink>Projetos</button>
       <ng-template ngbNavContent>
-        <p>
-          Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
-          master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro
-          keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat
-          salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
-        </p>
+
+        <div ngbAccordion>
+          <div ngbAccordionItem [collapsed]="false">
+            <h2 ngbAccordionHeader>
+              <button ngbAccordionButton>Em Desenvolvimento</button>
+            </h2>
+            <div ngbAccordionCollapse>
+              <div ngbAccordionBody class="p-2">
+                <ng-template>
+                  <div class="text-center" *ngIf="loadingSpinner">
+                    <div class="spinner-border text-primary" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>               
+                  </div>
+                  <table class="table table-hover mt-2" id="idSizeDiv1">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Início</th>
+                        <th scope="col">Fim</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Andamento</th>
+                        </tr>
+                    </thead>
+                    <div class="row justify-content-center" id="spinnerclickup" style="display: none;">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        </div>
+                    <tbody id="idTableBody1">
+                    </tbody>
+                </table>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+
+          <div ngbAccordionItem>
+            <h2 ngbAccordionHeader>
+              <button ngbAccordionButton>
+                Concluídos
+              </button>
+            </h2>
+            <div ngbAccordionCollapse>
+              <div ngbAccordionBody>
+                <ng-template>
+                  <div class="text-center" *ngIf="loadingSpinner">
+                    <div class="spinner-border text-primary" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>               
+                  </div>
+                  <table class="table table-hover mt-2" id="idSizeDiv1">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Início</th>
+                        <th scope="col">Fim</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Andamento</th>
+                        </tr>
+                    </thead>
+                    <div class="row justify-content-center" id="spinnerclickup" style="display: none;">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        </div>
+                    <tbody id="idTableBody1">
+                    </tbody>
+                </table>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+          
+          
+        </div>
+
       </ng-template>
     </li>
+
+
+
     <li [ngbNavItem]="2">
       <button ngbNavLink>Two</button>
       <ng-template ngbNavContent>
@@ -42,5 +122,5 @@
   
   <div [ngbNavOutlet]="nav" class="mt-2"></div>
   
-  <pre>Active: {{ active }}</pre>
+  
 </div>

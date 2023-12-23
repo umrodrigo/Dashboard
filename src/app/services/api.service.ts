@@ -1,30 +1,33 @@
 import { HttpClient, HttpEvent, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
-import { BuildFormDataService } from './buildFormData.service';
+import { envClickUp, environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = environment.apiUrl;
+  private apiKey = environment.apiKeyClickUp;
+  private apiUrl = envClickUp.apiURL;
 
-  constructor(private http: HttpClient, private buildFormData: BuildFormDataService) { }
+  constructor(private http: HttpClient) { }
 
   private createHeaders(): HttpHeaders {
     // Aqui você pode adicionar headers personalizados, se necessário
     return new HttpHeaders();
   }
 
-  private createParams(params: any): HttpParams {
+  private createParams(params: Record<string, string | number>): HttpParams {
     // Aqui você pode criar os parâmetros opcionais para a requisição GET
     let httpParams = new HttpParams();
-    if (params) {
+
+    if (params) 
       Object.keys(params).forEach(key => {
         httpParams = httpParams.set(key, params[key]);
       });
-    }
+    
+    httpParams = httpParams.set('Accept', 'application/json');
+    httpParams = httpParams.set('Authorization', this.apiKey);
     return httpParams;
   }
 

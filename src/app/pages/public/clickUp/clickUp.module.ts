@@ -2,8 +2,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClickUpComponent } from './clickUp.component';
-import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
+
+import { NgbNavModule, NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
   { path: '', component: ClickUpComponent }
@@ -15,6 +16,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     NgbNavModule,
+    NgbAccordionModule,
   ]
 })
 export class ClickUpModule { }
