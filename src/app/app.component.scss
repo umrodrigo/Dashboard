@@ -1,0 +1,20 @@
+/* Isso afeta toda a barra de rolagem */
+::-webkit-scrollbar {
+    width: 12px;  /* para barras de rolagem verticais */
+    height: 12px; /* para barras de rolagem horizontais */
+}
+
+/* Isso afeta o fundo da barra de rolagem */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Isso afeta o controle deslizante da barra de rolagem */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Quando você passa o mouse sobre o controle deslizante da barra de rolagem */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

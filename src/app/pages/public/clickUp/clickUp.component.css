@@ -6,3 +6,9 @@
   max-height: 600px;
   overflow-y: auto;
 }
+
+.nav-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
