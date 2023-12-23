@@ -31,12 +31,25 @@
                         <th scope="col">Andamento</th>
                         </tr>
                     </thead>
-                    <div class="row justify-content-center" id="spinnerclickup" style="display: none;">
-                        <div class="spinner-border text-primary" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
-                        </div>
-                    <tbody id="idTableBody1">
+                    <div *ngIf="projEmAndamento.length === 0 && !loadingSpinner" class="alert alert-info">
+                      Nenhum projeto carregado
+                    </div>
+                    <tbody *ngIf="projEmAndamento.length > 0 && !loadingSpinner">
+                      <tr *ngFor="let project of projEmAndamento; let i = index">
+                        <th scope="row">{{i + 1}}</th>
+                        <td>{{project.type}}</td>
+                        <td>{{project.name}}</td>
+                        <td>{{project.start_date}}</td>
+                        <td>{{project.due_date}}</td>
+                        <td class="text-uppercase">
+                          <span class="badge" [style.backgroundColor]="project.status.color">{{project.status.status}}</span>
+                        </td>
+                        <td>
+                          <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                              <div class="progress-bar" [style.width]="project.statusTasks.percentage + '%'">{{project.statusTasks.percentage}}%</div>
+                          </div>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
                 </ng-template>
@@ -70,12 +83,25 @@
                         <th scope="col">Andamento</th>
                         </tr>
                     </thead>
-                    <div class="row justify-content-center" id="spinnerclickup" style="display: none;">
-                        <div class="spinner-border text-primary" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
-                        </div>
-                    <tbody id="idTableBody1">
+                    <div *ngIf="projConcluido.length === 0 && !loadingSpinner" class="alert alert-info">
+                      Nenhum projeto carregado
+                    </div>
+                    <tbody *ngIf="projConcluido.length > 0 && !loadingSpinner">
+                      <tr *ngFor="let project of projConcluido; let i = index">
+                        <th scope="row">{{i + 1}}</th>
+                        <td>{{project.type}}</td>
+                        <td>{{project.name}}</td>
+                        <td>{{project.start_date}}</td>
+                        <td>{{project.due_date}}</td>
+                        <td class="text-uppercase">
+                          <span class="badge" [style.backgroundColor]="project.status.color">{{project.status.status}}</span>
+                        </td>
+                        <td>
+                          <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                              <div class="progress-bar" [style.width]="project.statusTasks.percentage + '%'">{{project.statusTasks.percentage}}%</div>
+                          </div>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
                 </ng-template>
@@ -92,29 +118,18 @@
 
 
     <li [ngbNavItem]="2">
-      <button ngbNavLink>Two</button>
+      <button ngbNavLink>Tasks</button>
       <ng-template ngbNavContent>
         <p>
-          Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko
-          farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts
-          ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar
-          helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson
-          8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester
-          stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+          Use sua imaginação para ver lindos gráficos aqui.
         </p>
       </ng-template>
     </li>
     <li [ngbNavItem]="3">
-      <button ngbNavLink>Three</button>
+      <button ngbNavLink>Novas Oportunidades</button>
       <ng-template ngbNavContent>
         <p>
-          Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi.
-          Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et odio.
-          Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam urna,
-          egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim, nec
-          tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus et
-          magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies in eget
-          neque. Phasellus nec tortor vel tellus pulvinar feugiat.
+          Acompanhe as tasks dos novos possíveis projetos e oportunidades.
         </p>
       </ng-template>
     </li>

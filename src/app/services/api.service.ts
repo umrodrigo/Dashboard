@@ -14,7 +14,10 @@ export class ApiService {
 
   private createHeaders(): HttpHeaders {
     // Aqui você pode adicionar headers personalizados, se necessário
-    return new HttpHeaders();
+    let header = new HttpHeaders();
+    header = header.append('Accept', 'application/json');
+    header = header.append('Authorization', this.apiKey);
+    return header;
   }
 
   private createParams(params: Record<string, string | number>): HttpParams {
@@ -26,8 +29,6 @@ export class ApiService {
         httpParams = httpParams.set(key, params[key]);
       });
     
-    httpParams = httpParams.set('Accept', 'application/json');
-    httpParams = httpParams.set('Authorization', this.apiKey);
     return httpParams;
   }
 

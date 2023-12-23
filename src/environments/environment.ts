@@ -5,7 +5,7 @@ export const environment = {
   };
 
 export const envClickUp = {
-  apiURL: 'https://api.clickup.com/api/v2/',
+  apiURL: 'https://api.clickup.com/api/v2',
   folders: 'space/90130002917/folder',
   lists: 'list/901300088409/task',
   //idKlip: '853fea5cce8f5f6d193384267780b947834c2de9'
